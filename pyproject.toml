@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "aiobalaboba"
+version = "1.0.3"
+description = "Asynchronous wrapper for Yandex Balaboba"
+authors = ["monosans <hsyqixco@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/monosans/aiobalaboba"
+keywords = [ "yalm" ]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: Russian",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+aiohttp = "^3.7.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

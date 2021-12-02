@@ -1,6 +1,6 @@
 # aiobalaboba
 
-Асинхронный модуль для взаимодействия с [Яндекс Балабоба](https://yandex.ru/lab/yalm).
+Асинхронная обёртка для [Яндекс Балабоба](https://yandex.ru/lab/yalm).
 
 Синхронная версия [здесь](https://github.com/monosans/balaboba).
 
@@ -10,13 +10,9 @@
 python -m pip install aiobalaboba
 ```
 
-Или просто скопируйте [код](https://github.com/monosans/aiobalaboba/blob/main/aiobalaboba/__init__.py) себе.
-
 ## Примеры использования
 
 ### Базовый пример
-
-Используется стандартный вариант стилизации, для запроса создаётся новый экземпляр aiohttp.ClientSession:
 
 ```python
 import asyncio
@@ -35,25 +31,21 @@ if __name__ == "__main__":
 
 Вывод: `Привет! Я рад тебя видеть на моём канале. Здесь ты сможешь встретить много интересных аниме, музыки, видео, и многого другого.`
 
-### Продвинутый пример
+### Варианты стилизации
 
-Используется 11-ый вариант стилизации "Народные мудрости", для запроса используется существующий экземпляр aiohttp.ClientSession:
+Функции `balaboba` в качестве аргумента `intro` можно передать желаемый вариант стилизации. Номера всех вариантов стилизации есть в [докстринге](https://github.com/monosans/aiobalaboba/blob/main/aiobalaboba/_balaboba.py#L24). В примере используется 11-й вариант стилизации "Народные мудрости" ([полный код примера](https://github.com/monosans/aiobalaboba/blob/main/examples/style.py)):
 
 ```python
-import asyncio
+response = await balaboba("Привет", intro=11)
+```
 
-from aiobalaboba import balaboba
-from aiohttp import ClientSession
+### Свой экземпляр aiohttp.ClientSession
 
+Функции `balaboba` в качестве аргумента `session` можно передать экземпляр aiohttp.ClientSession ([полный код примера](https://github.com/monosans/aiobalaboba/blob/main/examples/client_session.py)):
 
-async def main():
-    async with ClientSession() as session:
-        response = await balaboba("Привет", intro=11, session=session)
-    print(response)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+```python
+async with ClientSession() as session:
+    response = await balaboba("Привет", session=session)
 ```
 
 ## Дисклеймер с сайта
@@ -62,4 +54,4 @@ if __name__ == "__main__":
 
 ## License / Лицензия
 
-[MIT](LICENSE)
+[MIT](https://github.com/monosans/aiobalaboba/blob/main/LICENSE)

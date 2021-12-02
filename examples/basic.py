@@ -5,9 +5,8 @@ import asyncio
 from aiobalaboba import balaboba
 
 
-async def main():
-    # Используется стандартный вариант стилизации.
-    # Для запроса создаётся новый экземпляр aiohttp.ClientSession:
+async def main() -> None:
+    """Базовый пример."""
     response = await balaboba("Привет")
     print(response)
 
