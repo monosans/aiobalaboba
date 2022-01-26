@@ -34,6 +34,8 @@ async def balaboba(
             10 - Гороскоп.
             11 - Народные мудрости.
             18 - Новый Европейский Театр.
+            19 - Яндекс.Директ.
+            20 - Новогодние открытки.
         session (Optional[ClientSession], optional): По умолчанию None.
 
     Returns:
