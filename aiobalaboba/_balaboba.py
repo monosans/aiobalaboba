@@ -39,7 +39,7 @@ async def balaboba(
     Returns:
         str: Ответ Балабобы.
     """
-    if session:
+    if isinstance(session, ClientSession) and not session.closed:
         return await fetch(query, intro, session)
     async with ClientSession() as session:
         return await fetch(query, intro, session)
