@@ -40,6 +40,15 @@ async def balaboba(
 
     Returns:
         str: Ответ Балабобы.
+
+    Examples:
+        >>> response = await balaboba("Привет")
+
+        >>> response = await balaboba("Привет", intro=11)
+
+        >>> from aiohttp import ClientSession
+        ... async with ClientSession() as session:
+        ...     response = await balaboba("Привет", session=session)
     """
     if isinstance(session, ClientSession) and not session.closed:
         return await fetch(query, intro, session)
