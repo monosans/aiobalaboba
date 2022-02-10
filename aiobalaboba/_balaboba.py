@@ -34,8 +34,6 @@ async def balaboba(
             10 - Гороскоп.
             11 - Народные мудрости.
             18 - Новый Европейский Театр.
-            19 - Яндекс.Директ.
-            20 - Новогодние открытки.
         session (Optional[ClientSession], optional): По умолчанию None.
 
     Returns:
@@ -52,5 +50,5 @@ async def balaboba(
     """
     if isinstance(session, ClientSession) and not session.closed:
         return await fetch(query, intro, session)
-    async with ClientSession() as session:
-        return await fetch(query, intro, session)
+    async with ClientSession() as s:
+        return await fetch(query, intro, s)

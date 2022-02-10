@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiobalaboba"
-version = "1.0.5"
+version = "1.0.6"
 description = "Asynchronous wrapper for Yandex Balaboba"
 authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
