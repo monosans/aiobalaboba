@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiobalaboba"
-version = "1.0.6"
+version = "2.0.0"
 description = "Asynchronous wrapper for Yandex Balaboba"
 authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
@@ -18,6 +18,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.7"
 aiohttp = "^3.8"
+typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 
 [tool.poetry.dev-dependencies]
 black = "^22.8"
@@ -55,7 +56,7 @@ show_error_codes = true
 
 [tool.pytest.ini_options]
 xfail_strict = true
-addopts = "--strict-markers --strict-config --cov --cov-branch --cov-fail-under=100 --asyncio-mode=auto"
+addopts = "--strict-markers --strict-config --cov --cov-branch --asyncio-mode=auto"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

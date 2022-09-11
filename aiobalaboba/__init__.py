@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
-from aiobalaboba._balaboba import balaboba
+"""Asynchronous wrapper for Yandex Balaboba."""
+from __future__ import annotations
 
-__all__ = ("balaboba",)
+from ._balaboba import Balaboba
+
+__all__ = ("Balaboba",)

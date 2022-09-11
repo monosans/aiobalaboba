@@ -1,54 +1,90 @@
-# -*- coding: utf-8 -*-
-from typing import Optional
+from __future__ import annotations
+
+import sys
+from typing import Any, Dict, Generator, NamedTuple, Optional
 
 from aiohttp import ClientSession
 
-
-async def fetch(query: str, intro: int, session: ClientSession) -> str:
-    async with session.post(
-        "https://yandex.ru/lab/api/yalm/text3",
-        json={"query": query, "intro": intro, "filter": 1},
-    ) as resp:
-        r = await resp.json()
-    return f"{r['query']}{r['text']}"
+if sys.version_info < (3, 8):  # pragma: no cover
+    from typing_extensions import Literal
+else:  # pragma: no cover
+    from typing import Literal
 
 
-async def balaboba(
-    query: str, *, intro: int = 0, session: Optional[ClientSession] = None
-) -> str:
-    """Отправка запроса Яндекс Балабобе.
+class Intro(NamedTuple):
+    number: int
+    name: str
+    description: str
 
-    Args:
-        query (str): Текст для Балабобы.
-        intro (int, optional): Вариант стилизации.
-            0 - Без стиля. По умолчанию.
-            1 - Теории заговора.
-            2 - ТВ-репортажи.
-            3 - Тосты.
-            4 - Пацанские цитаты.
-            5 - Рекламные слоганы.
-            6 - Короткие истории.
-            7 - Подписи в Instagram.
-            8 - Короче, Википедия.
-            9 - Синопсисы фильмов.
-            10 - Гороскоп.
-            11 - Народные мудрости.
-            18 - Новый Европейский Театр.
-        session (Optional[ClientSession], optional): По умолчанию None.
 
-    Returns:
-        str: Ответ Балабобы.
+class Balaboba:
+    """Asynchronous wrapper for Yandex Balaboba."""
 
-    Examples:
-        >>> response = await balaboba("Привет")
+    __slots__ = ("session",)
 
-        >>> response = await balaboba("Привет", intro=11)
+    def __init__(self, session: Optional[ClientSession] = None) -> None:
+        """Asynchronous wrapper for Yandex Balaboba.
 
-        >>> from aiohttp import ClientSession
-        ... async with ClientSession() as session:
-        ...     response = await balaboba("Привет", session=session)
-    """
-    if isinstance(session, ClientSession) and not session.closed:
-        return await fetch(query, intro, session)
-    async with ClientSession() as s:
-        return await fetch(query, intro, s)
+        Args:
+            session: Instance of aiohttp.ClientSession. By default, a
+                new instance is created for each request.
+        """
+        self.session = session
+
+    async def intros(
+        self, language: Literal["en", "ru"] = "ru"
+    ) -> Generator[Intro, None, None]:
+        """Get text types."""
+        endpoint = "intros" if language == "ru" else "intros_eng"
+        response = await self._get_response(method="GET", endpoint=endpoint)
+        return (Intro(*intro) for intro in response["intros"])
+
+    async def balaboba(self, query: str, *, intro: int) -> str:
+        """Get an answer from Balaboba.
+
+        Args:
+            query: Text for Balaboba.
+            intro: Text type number. You can get the list of types using
+                the intros method.
+        """
+        response = await self._get_response(
+            method="POST",
+            endpoint="text3",
+            json={"query": query, "intro": intro, "filter": 1},
+        )
+        return f"{response['query']}{response['text']}"
+
+    async def _get_response(
+        self,
+        *,
+        method: str,
+        endpoint: str,
+        json: Optional[Dict[str, Any]] = None,
+    ) -> Any:
+        if isinstance(self.session, ClientSession) and not self.session.closed:
+            return await self._fetch(
+                method=method,
+                endpoint=endpoint,
+                json=json,
+                session=self.session,
+            )
+        async with ClientSession() as session:
+            return await self._fetch(
+                method=method, endpoint=endpoint, json=json, session=session
+            )
+
+    async def _fetch(
+        self,
+        *,
+        method: str,
+        endpoint: str,
+        json: Optional[Dict[str, Any]],
+        session: ClientSession,
+    ) -> Any:
+        async with session.request(
+            method,
+            f"https://yandex.ru/lab/api/yalm/{endpoint}",
+            json=json,
+            raise_for_status=True,
+        ) as response:
+            return await response.json()
