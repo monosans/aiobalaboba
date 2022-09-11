@@ -6,19 +6,56 @@ authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/monosans/aiobalaboba"
-keywords = [ "yalm" ]
+keywords = ["yalm"]
 classifiers = [
     "Intended Audience :: Developers",
     "Natural Language :: Russian",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Typing :: Typed",
 ]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-aiohttp = "^3.7.4"
+aiohttp = "^3.8"
+
+[tool.poetry.dev-dependencies]
+black = "^22.8"
+isort = "^5.10"
+mypy = "^0.971"
+pre-commit = "^2.20"
+pytest = "^7.1"
+pytest-asyncio = "^0.19"
+pytest-cov = "^3.0"
+
+[tool.black]
+line-length = 79
+target-version = ["py37"]
+skip-magic-trailing-comma = true
+preview = true
+
+[tool.isort]
+py_version = 37
+profile = "black"
+line_length = 79
+add_imports = ["from __future__ import annotations"]
+
+[tool.mypy]
+python_version = "3.7"
+warn_unreachable = true
+local_partial_types = true
+enable_error_code = [
+    "redundant-expr",
+    "truthy-bool",
+    "ignore-without-code",
+    "unused-awaitable",
+]
+strict = true
+show_error_codes = true
+
+[tool.pytest.ini_options]
+xfail_strict = true
+addopts = "--strict-markers --strict-config --cov --cov-branch --cov-fail-under=100 --asyncio-mode=auto"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
