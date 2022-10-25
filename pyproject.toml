@@ -25,7 +25,7 @@ black = "^22.10"
 isort = "^5.10"
 mypy = "^0.982"
 pre-commit = "^2.20"
-pytest = "^7.1"
+pytest = "^7.2"
 pytest-asyncio = "^0.20"
 pytest-cov = "^4.0"
 
