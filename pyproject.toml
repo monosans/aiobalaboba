@@ -20,7 +20,7 @@ python = "^3.7"
 aiohttp = "^3.8"
 typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^22.10"
 isort = "^5.10"
 mypy = "^0.990"
@@ -58,5 +58,5 @@ xfail_strict = true
 addopts = "--strict-markers --strict-config --cov --cov-branch --asyncio-mode=auto"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
