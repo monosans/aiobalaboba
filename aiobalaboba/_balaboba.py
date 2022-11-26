@@ -34,7 +34,6 @@ class Balaboba:
     async def get_text_types(
         self, language: Literal["en", "ru"] = "ru"
     ) -> List[TextType]:
-        """Get text types."""
         endpoint = "intros" if language == "ru" else "intros_eng"
         response = await self._session.get_response(
             method="GET", endpoint=endpoint
