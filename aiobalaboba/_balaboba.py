@@ -20,12 +20,7 @@ class Balaboba:
     __slots__ = ("_session",)
 
     def __init__(self, session: Optional[ClientSession] = None) -> None:
-        """Asynchronous wrapper for Yandex Balaboba.
-
-        Args:
-            session: Instance of aiohttp.ClientSession. By default, a
-                new instance is created for each request.
-        """
+        """Asynchronous wrapper for Yandex Balaboba."""
         self._session = HTTPSession(session)
 
     @property
@@ -49,13 +44,6 @@ class Balaboba:
     async def balaboba(
         self, query: str, text_type: Union[TextType, int]
     ) -> str:
-        """Get an answer from Balaboba.
-
-        Args:
-            query: Text for Balaboba.
-            text_type: Text type number. You can get the list of types using
-                the get_text_types method.
-        """
         intro = (
             text_type.number if isinstance(text_type, TextType) else text_type
         )
