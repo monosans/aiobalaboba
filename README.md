@@ -28,15 +28,9 @@ from aiobalaboba import Balaboba
 
 async def main():
     bb = Balaboba()
-
-    # Get text types
-    intros = await bb.intros(language="en")
-
-    # Get the first text type
-    intro = next(intros)
-
-    # Print Balaboba's response to the "Hello" query
-    response = await bb.balaboba("Hello", intro=intro.number)
+    intros = await bb.get_text_types(language="en")
+    text_type = text_types[0].number
+    response = await bb.balaboba("Hello", text_type=text_type)
     print(response)
 
 asyncio.run(main())

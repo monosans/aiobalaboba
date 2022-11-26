@@ -26,8 +26,8 @@ async def test_balaboba(
     try:
         session = ClientSession() if session_type else None
         b = Balaboba(session=session)
-        intros = tuple(await b.intros(language))
-        response = await b.balaboba(query, intro=choice(intros).number)
+        text_types = tuple(await b.get_text_types(language))
+        response = await b.balaboba(query, text_type=choice(text_types).number)
     finally:
         if isinstance(session, ClientSession):
             await session.close()
