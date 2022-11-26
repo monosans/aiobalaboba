@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Dict, List, NamedTuple, Optional
+from typing import Any, Dict, List, Optional
 
 from aiohttp import ClientSession
+
+from ._text_type import TextType
 
 if sys.version_info < (3, 8):  # pragma: no cover
     from typing_extensions import Literal
 else:  # pragma: no cover
     from typing import Literal
-
-
-class TextType(NamedTuple):
-    number: int
-    name: str
-    description: str
 
 
 class Balaboba:
