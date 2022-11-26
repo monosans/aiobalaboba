@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import sys
 from random import choice
-from typing import Optional, Type
 
 import pytest
 from aiohttp import ClientSession
@@ -15,21 +14,14 @@ else:  # pragma: no cover
     from typing import Literal
 
 
-@pytest.mark.parametrize("session_type", (None, ClientSession))
-@pytest.mark.parametrize("language", ("en", "ru"))
-@pytest.mark.parametrize("query", ("Привет", "Hello"))
-async def test_balaboba(
-    session_type: Optional[Type[ClientSession]],
-    language: Literal["en", "ru"],
-    query: str,
-) -> None:
-    try:
-        session = ClientSession() if session_type else None
-        b = Balaboba(session=session)
-        text_types = tuple(await b.get_text_types(language))
+@pytest.mark.parametrize("language,query", (("en", "Hello"), ("ru", "Привет")))
+async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
+    b = Balaboba()
+    assert b.session is None
+    text_types = await b.get_text_types(language)
+    async with ClientSession() as session:
+        b.session = session
+        assert b.session is session
         response = await b.balaboba(query, text_type=choice(text_types).number)
-    finally:
-        if isinstance(session, ClientSession):
-            await session.close()
     assert len(response) >= len(query)
     assert query.lower() in response.lower()
