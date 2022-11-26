@@ -29,8 +29,7 @@ from aiobalaboba import Balaboba
 async def main():
     bb = Balaboba()
     intros = await bb.get_text_types(language="en")
-    text_type = text_types[0].number
-    response = await bb.balaboba("Hello", text_type=text_type)
+    response = await bb.balaboba("Hello", text_type=text_types[0])
     print(response)
 
 asyncio.run(main())

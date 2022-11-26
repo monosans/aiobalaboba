@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import sys
-from random import choice
 
 import pytest
 from aiohttp import ClientSession
@@ -22,6 +21,6 @@ async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
     async with ClientSession() as session:
         b.session = session
         assert b.session is session
-        response = await b.balaboba(query, text_type=choice(text_types).number)
+        response = await b.balaboba(query, text_type=text_types[0])
     assert len(response) >= len(query)
     assert query.lower() in response.lower()
