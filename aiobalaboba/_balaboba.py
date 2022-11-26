@@ -52,7 +52,7 @@ class Balaboba:
             endpoint="text3",
             json={"query": query, "intro": intro, "filter": 1},
         )
-        return f"{response['query']}{response['text']}"
+        return "{}{}".format(response["query"], response["text"])
 
     async def _get_response(
         self,
