@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Dict, Generator, NamedTuple, Optional
+from typing import Any, Dict, List, NamedTuple, Optional
 
 from aiohttp import ClientSession
 
@@ -33,11 +33,11 @@ class Balaboba:
 
     async def intros(
         self, language: Literal["en", "ru"] = "ru"
-    ) -> Generator[Intro, None, None]:
+    ) -> List[Intro]:
         """Get text types."""
         endpoint = "intros" if language == "ru" else "intros_eng"
         response = await self._get_response(method="GET", endpoint=endpoint)
-        return (Intro(*intro) for intro in response["intros"])
+        return [Intro(*intro) for intro in response["intros"]]
 
     async def balaboba(self, query: str, *, intro: int) -> str:
         """Get an answer from Balaboba.
