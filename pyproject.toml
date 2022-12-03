@@ -22,6 +22,7 @@ typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 
 [tool.poetry.dev-dependencies]
 black = "^22.10"
+covdefaults = "^2.2"
 isort = "^5.10"
 mypy = "^0.991"
 pre-commit = "^2.20"
@@ -34,6 +35,12 @@ line-length = 79
 target-version = ["py37"]
 skip-magic-trailing-comma = true
 preview = true
+
+[tool.coverage.report]
+exclude_lines = ["@(abc.)?abstractmethod"]
+
+[tool.coverage.run]
+plugins = ["covdefaults"]
 
 [tool.isort]
 py_version = 37
@@ -58,7 +65,7 @@ show_error_codes = true
 
 [tool.pytest.ini_options]
 xfail_strict = true
-addopts = "--strict-markers --strict-config --cov --cov-branch --asyncio-mode=auto"
+addopts = "--strict-markers --strict-config --asyncio-mode=auto"
 
 [build-system]
 requires = ["poetry-core"]
