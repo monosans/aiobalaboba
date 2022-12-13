@@ -23,7 +23,7 @@ typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 [tool.poetry.dev-dependencies]
 black = "^22.12"
 covdefaults = "^2.2"
-isort = "^5.10"
+isort = "^5.11"
 mypy = "^0.991"
 pre-commit = "^2.20"
 pytest = "^7.2"
