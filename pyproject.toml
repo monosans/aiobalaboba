@@ -20,7 +20,7 @@ python = "^3.7"
 aiohttp = "^3.8"
 typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^22.12"
 covdefaults = "^2.2"
 isort = "^5.11"
