@@ -12,18 +12,11 @@ class HTTPSession:
         self.session = session
 
     async def get_response(
-        self,
-        *,
-        method: str,
-        endpoint: str,
-        json: Optional[Dict[str, Any]] = None,
+        self, *, method: str, endpoint: str, json: Optional[Dict[str, Any]] = None
     ) -> Any:
         if isinstance(self.session, ClientSession) and not self.session.closed:
             return await self._fetch(
-                method=method,
-                endpoint=endpoint,
-                json=json,
-                session=self.session,
+                method=method, endpoint=endpoint, json=json, session=self.session
             )
         async with ClientSession() as session:
             return await self._fetch(
