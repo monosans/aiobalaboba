@@ -60,7 +60,7 @@ strict = true
 
 [tool.pytest.ini_options]
 xfail_strict = true
-addopts = "--strict-markers --strict-config --asyncio-mode=auto"
+addopts = ["--strict-markers", "--strict-config", "--asyncio-mode=auto"]
 
 [tool.ruff]
 target-version = "py37"
