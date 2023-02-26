@@ -8,10 +8,20 @@ readme = "README.md"
 repository = "https://github.com/monosans/aiobalaboba"
 keywords = ["yalm"]
 classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: AsyncIO",
     "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Natural Language :: English",
     "Natural Language :: Russian",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development",
     "Typing :: Typed",
 ]
 
