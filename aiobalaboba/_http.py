@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 
 from aiohttp import ClientSession
 
@@ -12,7 +12,7 @@ class HTTPSession:
         self.session = session
 
     async def get_response(
-        self, *, method: str, endpoint: str, json: Optional[Dict[str, Any]] = None
+        self, *, method: str, endpoint: str, json: Any = None
     ) -> Any:
         if isinstance(self.session, ClientSession) and not self.session.closed:
             return await self._fetch(
@@ -24,12 +24,7 @@ class HTTPSession:
             )
 
     async def _fetch(
-        self,
-        *,
-        method: str,
-        endpoint: str,
-        json: Optional[Dict[str, Any]],
-        session: ClientSession,
+        self, *, method: str, endpoint: str, json: Any, session: ClientSession
     ) -> Any:
         async with session.request(
             method,
