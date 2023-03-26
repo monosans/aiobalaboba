@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/monosans/aiobalaboba/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/monosans/aiobalaboba/actions/workflows/ci.yml?query=event%3Apush+branch%3Amain)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/monosans/aiobalaboba/main.svg)](https://results.pre-commit.ci/latest/github/monosans/aiobalaboba/main)
-[![Coverage](https://img.shields.io/codecov/c/github/monosans/aiobalaboba/main)](https://codecov.io/gh/monosans/aiobalaboba)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/aiobalaboba)](https://pypi.org/project/aiobalaboba/)
+[![Coverage](https://img.shields.io/codecov/c/github/monosans/aiobalaboba/main?logo=codecov)](https://codecov.io/gh/monosans/aiobalaboba)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/aiobalaboba?logo=pypi)](https://pypi.org/project/aiobalaboba/)
 
 Asynchronous wrapper for [Yandex Balaboba](https://yandex.com/lab/yalm-en) ([Яндекс Балабоба](https://yandex.ru/lab/yalm)).
 
