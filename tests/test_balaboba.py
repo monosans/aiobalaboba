@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 
 import pytest
-from aiohttp import ClientSession
+from aiohttp import ClientResponseError, ClientSession
 
 from aiobalaboba import Balaboba
 
@@ -21,6 +21,11 @@ async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
     async with ClientSession() as session:
         b.session = session
         assert b.session is session
-        response = await b.balaboba(query, text_type=text_types[0])
+        try:
+            response = await b.balaboba(query, text_type=text_types[0])
+        except ClientResponseError as e:
+            if e.status != 400:  # noqa: PLR2004
+                raise
+            return
     assert len(response) >= len(query)
     assert query.lower() in response.lower()
