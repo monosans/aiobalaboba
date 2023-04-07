@@ -23,7 +23,7 @@ async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
         assert b.session is session
         try:
             response = await b.balaboba(query, text_type=text_types[0])
-        except ClientResponseError as e:
+        except ClientResponseError as e:  # pragma: no cover
             if e.status != 400:  # noqa: PLR2004
                 raise
             return
