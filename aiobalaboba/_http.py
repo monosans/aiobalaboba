@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from aiohttp import ClientSession
+from aiohttp import ClientResponse, ClientSession
 
 
 class HTTPSession:
@@ -15,21 +15,24 @@ class HTTPSession:
         self, *, method: str, endpoint: str, json: Any = None
     ) -> Any:
         if isinstance(self.session, ClientSession) and not self.session.closed:
-            return await self._fetch(
+            response = await self._fetch(
                 method=method, endpoint=endpoint, json=json, session=self.session
             )
-        async with ClientSession() as session:
-            return await self._fetch(
-                method=method, endpoint=endpoint, json=json, session=session
-            )
+        else:
+            async with ClientSession() as session:
+                response = await self._fetch(
+                    method=method, endpoint=endpoint, json=json, session=session
+                )
+        return await response.json()
 
     async def _fetch(
         self, *, method: str, endpoint: str, json: Any, session: ClientSession
-    ) -> Any:
+    ) -> ClientResponse:
         async with session.request(
             method,
             f"https://yandex.ru/lab/api/yalm/{endpoint}",
             json=json,
             raise_for_status=True,
         ) as response:
-            return await response.json()
+            await response.read()
+        return response
