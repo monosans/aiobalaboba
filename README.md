@@ -16,7 +16,7 @@ The neural network doesn’t really know what it’s saying, so it can say absol
 ## Installation
 
 ```bash
-python -m pip install aiobalaboba
+python -m pip install -U aiobalaboba
 ```
 
 ## Usage example
