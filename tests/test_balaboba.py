@@ -21,11 +21,6 @@ async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
     async with ClientSession() as session:
         b.session = session
         assert b.session is session
-        try:
-            response = await b.balaboba(query, text_type=text_types[0])
-        except ClientResponseError as e:  # pragma: no cover
-            if e.status != 400:  # noqa: PLR2004
-                raise
-            return
+        response = await b.balaboba(query, text_type=text_types[0])
     assert len(response) >= len(query)
     assert query.lower() in response.lower()
