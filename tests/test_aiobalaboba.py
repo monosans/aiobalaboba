@@ -26,6 +26,6 @@ async def test_balaboba(language: Literal["en", "ru"], query: str) -> None:
         except ClientResponseError as e:  # pragma: no cover
             if e.status != 400:  # noqa: PLR2004
                 raise
-            return
-    assert len(response) >= len(query)
-    assert query.lower() in response.lower()
+        else:  # pragma: no cover
+            assert len(response) >= len(query)
+            assert query.lower() in response.lower()
