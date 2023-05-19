@@ -1,7 +1,7 @@
 # aiobalaboba
 
 [![CI](https://github.com/monosans/aiobalaboba/actions/workflows/ci.yml/badge.svg)](https://github.com/monosans/aiobalaboba/actions/workflows/ci.yml)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/aiobalaboba?logo=pypi)](https://pypi.org/project/aiobalaboba/)
+[![Downloads](https://static.pepy.tech/badge/aiobalaboba)](https://pepy.tech/project/aiobalaboba)
 
 Asynchronous wrapper for [Yandex Balaboba](https://yandex.com/lab/yalm-en) ([Яндекс Балабоба](https://yandex.ru/lab/yalm)).
 
