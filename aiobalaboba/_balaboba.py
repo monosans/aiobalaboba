@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sys
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from aiohttp import ClientSession
 
@@ -35,7 +35,9 @@ class Balaboba:
         self, language: Literal["en", "ru"] = "ru"
     ) -> List[TextType]:
         endpoint = "intros" if language == "ru" else "intros_eng"
-        response = await self._session.get_response(method="GET", endpoint=endpoint)
+        response = await self._session.get_response(
+            method="GET", endpoint=endpoint, headers=self._get_text_types_headers()
+        )
         return [TextType(*intro) for intro in response["intros"]]
 
     async def balaboba(self, query: str, text_type: Union[TextType, int]) -> str:
@@ -44,5 +46,22 @@ class Balaboba:
             method="POST",
             endpoint="text3",
             json={"query": query, "intro": intro, "filter": 1},
+            headers=self._get_balaboba_headers(query, intro),
         )
         return "{}{}".format(response["query"], response["text"])
+
+    def _get_text_types_headers(self) -> Dict[str, str]:
+        return {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; rv:113.0) Gecko/20100101 Firefox/113.0"
+            )
+        }
+
+    def _get_balaboba_headers(
+        self, query: str, text_type: int  # noqa: ARG002
+    ) -> Dict[str, str]:
+        return {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; rv:113.0) Gecko/20100101 Firefox/113.0"
+            )
+        }
