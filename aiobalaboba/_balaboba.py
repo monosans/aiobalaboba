@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import urllib.parse
 from typing import Dict, List, Optional, Union
 
 from aiohttp import ClientSession
@@ -54,14 +55,31 @@ class Balaboba:
         return {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; rv:113.0) Gecko/20100101 Firefox/113.0"
-            )
+            ),
+            "Accept-Language": "en-US,en;q=0.5",
+            "Referer": "https://yandex.ru/lab/yalm",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "TE": "trailers",
         }
 
-    def _get_balaboba_headers(
-        self, query: str, text_type: int  # noqa: ARG002
-    ) -> Dict[str, str]:
+    def _get_balaboba_headers(self, query: str, text_type: int) -> Dict[str, str]:
         return {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; rv:113.0) Gecko/20100101 Firefox/113.0"
-            )
+            ),
+            "Accept-Language": "en-US,en;q=0.5",
+            "Referer": f"https://yandex.ru/lab/yalm?style={text_type}",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-Retpath-Y": (
+                "https://yandex.ru/lab/yalm?style={}&input={}&skipCurtain=1".format(
+                    text_type, urllib.parse.quote_plus(query)
+                )
+            ),
+            "Origin": "https://yandex.ru",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "TE": "trailers",
         }
