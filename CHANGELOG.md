@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.1] - 2023-05-31
+
+- Added headers to requests to avoid triggering Yandex WAF. Fixes 400 Bad Request error.
+
 ## [3.0.0] - 2022-11-26
 
 - The `intros` method has been renamed to `get_text_types` and now it returns a list instead of a generator. The `balaboba` method parameter has been renamed accordingly from `intro` to `text_type`.
