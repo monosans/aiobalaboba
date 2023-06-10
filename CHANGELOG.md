@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.2] - 2023-06-10
+
+- Update User-Agent header.
+
 ## [3.0.1] - 2023-05-31
 
 - Added headers to requests to avoid triggering Yandex WAF. Fixes 400 Bad Request error.
