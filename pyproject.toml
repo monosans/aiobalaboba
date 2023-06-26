@@ -33,7 +33,7 @@ typing-extensions = { version = ">=3.7.4.3,<5", python = "<3.8" }
 [tool.poetry.group.dev.dependencies]
 black = "23.3.0"
 covdefaults = "2.3.0"
-mypy = "1.4.0"
+mypy = "1.4.1"
 pre-commit = "2.21.0"
 pytest = "7.3.2"
 pytest-asyncio = "0.21.0"
