@@ -37,12 +37,18 @@ class Balaboba:
     ) -> List[TextType]:
         endpoint = "intros" if language == "ru" else "intros_eng"
         response = await self._session.get_response(
-            method="GET", endpoint=endpoint, headers=self._get_text_types_headers()
+            method="GET",
+            endpoint=endpoint,
+            headers=self._get_text_types_headers(),
         )
         return [TextType(*intro) for intro in response["intros"]]
 
-    async def balaboba(self, query: str, text_type: Union[TextType, int]) -> str:
-        intro = text_type.number if isinstance(text_type, TextType) else text_type
+    async def balaboba(
+        self, query: str, text_type: Union[TextType, int]
+    ) -> str:
+        intro = (
+            text_type.number if isinstance(text_type, TextType) else text_type
+        )
         response = await self._session.get_response(
             method="POST",
             endpoint="text3",
@@ -54,7 +60,8 @@ class Balaboba:
     def _get_text_types_headers(self) -> Dict[str, str]:
         return {
             "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; rv:114.0) Gecko/20100101 Firefox/114.0"
+                "Mozilla/5.0 (Windows NT 10.0; rv:114.0)"
+                " Gecko/20100101 Firefox/114.0"
             ),
             "Accept-Language": "en-US,en;q=0.5",
             "Referer": "https://yandex.ru/lab/yalm",
@@ -64,18 +71,20 @@ class Balaboba:
             "TE": "trailers",
         }
 
-    def _get_balaboba_headers(self, query: str, text_type: int) -> Dict[str, str]:
+    def _get_balaboba_headers(
+        self, query: str, text_type: int
+    ) -> Dict[str, str]:
         return {
             "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; rv:114.0) Gecko/20100101 Firefox/114.0"
+                "Mozilla/5.0 (Windows NT 10.0; rv:114.0)"
+                " Gecko/20100101 Firefox/114.0"
             ),
             "Accept-Language": "en-US,en;q=0.5",
             "Referer": f"https://yandex.ru/lab/yalm?style={text_type}",
             "X-Requested-With": "XMLHttpRequest",
             "X-Retpath-Y": (
-                "https://yandex.ru/lab/yalm?style={}&input={}&skipCurtain=1".format(
-                    text_type, urllib.parse.quote_plus(query)
-                )
+                "https://yandex.ru/lab/yalm?style={}&input={}&skipCurtain=1"
+                .format(text_type, urllib.parse.quote_plus(query))
             ),
             "Origin": "https://yandex.ru",
             "Sec-Fetch-Dest": "empty",

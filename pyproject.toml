@@ -42,6 +42,7 @@ ruff = "0.0.275"
 
 [tool.black]
 target-version = ["py37"]
+line-length = 80
 skip-magic-trailing-comma = true
 preview = true
 
@@ -75,6 +76,7 @@ xfail_strict = true
 
 [tool.ruff]
 target-version = "py37"
+line-length = 80
 select = ["ALL"]
 ignore = [
     "ANN",
