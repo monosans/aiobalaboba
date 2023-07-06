@@ -9,9 +9,9 @@ from aiohttp import ClientSession
 from ._http import HTTPSession
 from ._text_type import TextType
 
-if sys.version_info < (3, 8):
+if sys.version_info < (3, 8):  # pragma: <3.8 cover
     from typing_extensions import Literal
-else:
+else:  # pragma: >=3.8 cover
     from typing import Literal
 
 
