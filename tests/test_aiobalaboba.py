@@ -7,7 +7,7 @@ from aiohttp import ClientSession
 
 from aiobalaboba import Balaboba
 
-if sys.version_info < (3, 8):  # pragma: <3.8 cover
+if sys.version_info < (3, 8):
     from typing_extensions import Literal
 else:  # pragma: >=3.8 cover
     from typing import Literal
