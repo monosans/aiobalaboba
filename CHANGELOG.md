@@ -2,6 +2,10 @@
 
 [Semantic Versioning](https://semver.org/)
 
+## [3.0.3] - 2023-07-06
+
+- Add documentation.
+
 ## [3.0.2] - 2023-06-10
 
 - Update User-Agent header.
