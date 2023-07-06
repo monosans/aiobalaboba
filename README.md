@@ -17,22 +17,9 @@ The neural network doesn’t really know what it’s saying, so it can say absol
 python -m pip install -U aiobalaboba
 ```
 
-## Usage example
+## Documentation
 
-```python
-import asyncio
-
-from aiobalaboba import Balaboba
-
-
-async def main():
-    bb = Balaboba()
-    text_types = await bb.get_text_types(language="en")
-    response = await bb.balaboba("Hello", text_type=text_types[0])
-    print(response)
-
-asyncio.run(main())
-```
+<https://aiobalaboba.readthedocs.io/>
 
 ## License
 

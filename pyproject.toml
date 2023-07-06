@@ -6,6 +6,7 @@ authors = ["monosans <hsyqixco@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/monosans/aiobalaboba"
+documentation = "https://aiobalaboba.readthedocs.io/"
 keywords = ["yalm"]
 classifiers = [
     "Environment :: Web Environment",
