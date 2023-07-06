@@ -20,19 +20,20 @@ class Balaboba:
 
     Examples:
         ```python
-        >>> import asyncio
-        >>>
-        >>> from aiobalaboba import Balaboba
-        >>>
-        >>>
-        >>> async def main():
-        ...     bb = Balaboba()
-        ...     text_types = await bb.get_text_types(language="en")
-        ...     print(text_types)
-        ...     response = await bb.balaboba("Hello", text_type=text_types[0])
-        ...     print(response)
-        >>>
-        >>> asyncio.run(main())
+        import asyncio
+
+        from aiobalaboba import Balaboba
+
+
+        async def main():
+            bb = Balaboba()
+            text_types = await bb.get_text_types(language="en")
+            print(text_types)
+            response = await bb.balaboba("Hello", text_type=text_types[0])
+            print(response)
+
+
+        asyncio.run(main())
         ```
     """
 
