@@ -16,12 +16,29 @@ else:  # pragma: >=3.8 cover
 
 
 class Balaboba:
-    """Asynchronous wrapper for Yandex Balaboba."""
+    """Asynchronous wrapper for Yandex Balaboba.
+
+    Examples:
+        ```python
+        >>> import asyncio
+        >>>
+        >>> from aiobalaboba import Balaboba
+        >>>
+        >>>
+        >>> async def main():
+        ...     bb = Balaboba()
+        ...     text_types = await bb.get_text_types(language="en")
+        ...     print(text_types)
+        ...     response = await bb.balaboba("Hello", text_type=text_types[0])
+        ...     print(response)
+        >>>
+        >>> asyncio.run(main())
+        ```
+    """
 
     __slots__ = ("_session",)
 
     def __init__(self, session: Optional[ClientSession] = None) -> None:
-        """Asynchronous wrapper for Yandex Balaboba."""
         self._session = HTTPSession(session)
 
     @property
