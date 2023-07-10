@@ -8,6 +8,19 @@ nav:
   - api.md
 theme:
   name: material
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.tabs.link
+    - navigation.footer
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+  font: false
+  icon:
+    repo: fontawesome/brands/github
   language: en
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -22,9 +35,6 @@ theme:
       toggle:
         icon: material/lightbulb-outline
         name: Light mode
-  icon:
-    repo: fontawesome/brands/github
-  font: false
 extra:
   social:
     - icon: fontawesome/brands/telegram
@@ -38,6 +48,8 @@ extra:
       name: Developer's LinkedIn
 markdown_extensions:
   - pymdownx.superfences
+  - toc:
+      permalink: true
 plugins:
   - search
   - minify_html
@@ -45,10 +57,10 @@ plugins:
       default_handler: python
       handlers:
         python:
+          load_external_modules: true
           options:
             filters:
-              - "!^_"
-              - "__init__"
+              - "!^_(?:[^_].*[^_]|_(?:all|doc|main|module|new|slots)__)$"
             members_order: source
             show_category_heading: true
             show_if_no_docstring: true
