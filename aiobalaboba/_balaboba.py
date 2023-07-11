@@ -78,8 +78,8 @@ class Balaboba:
     def _get_text_types_headers(self) -> Dict[str, str]:
         return {
             "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; rv:114.0)"
-                " Gecko/20100101 Firefox/114.0"
+                "Mozilla/5.0 (Windows NT 10.0; rv:109.0)"
+                " Gecko/20100101 Firefox/115.0"
             ),
             "Accept-Language": "en-US,en;q=0.5",
             "Referer": "https://yandex.ru/lab/yalm",
@@ -94,8 +94,8 @@ class Balaboba:
     ) -> Dict[str, str]:
         return {
             "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; rv:114.0)"
-                " Gecko/20100101 Firefox/114.0"
+                "Mozilla/5.0 (Windows NT 10.0; rv:109.0)"
+                " Gecko/20100101 Firefox/115.0"
             ),
             "Accept-Language": "en-US,en;q=0.5",
             "Referer": f"https://yandex.ru/lab/yalm?style={text_type}",
