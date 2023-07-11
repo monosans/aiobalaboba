@@ -1,4 +1,4 @@
-# aiobalaboba
+# Home
 
 Welcome to the documentation of aiobalaboba, the asynchronous wrapper for the [Yandex Balaboba](https://yandex.com/lab/yalm-en) ([Яндекс Балабоба](https://yandex.ru/lab/yalm))!
 
