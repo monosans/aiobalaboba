@@ -19,7 +19,7 @@ python -m pip install -U aiobalaboba
 
 ## Documentation
 
-<https://aiobalaboba.readthedocs.io/>
+<https://aiobalaboba.readthedocs.io>
 
 ## License
 
