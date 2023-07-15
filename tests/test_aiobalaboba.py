@@ -1,16 +1,11 @@
 from __future__ import annotations
 
-import sys
+from typing import Literal
 
 import pytest
 from aiohttp import ClientSession
 
 from aiobalaboba import Balaboba
-
-if sys.version_info < (3, 8):  # pragma: <3.8 cover
-    from typing_extensions import Literal
-else:  # pragma: >=3.8 cover
-    from typing import Literal
 
 
 @pytest.mark.parametrize(

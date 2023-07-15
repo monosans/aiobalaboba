@@ -1,18 +1,12 @@
 from __future__ import annotations
 
-import sys
 import urllib.parse
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Literal, Optional, Union
 
 from aiohttp import ClientSession
 
 from ._http import HTTPSession
 from ._text_type import TextType
-
-if sys.version_info < (3, 8):  # pragma: <3.8 cover
-    from typing_extensions import Literal
-else:  # pragma: >=3.8 cover
-    from typing import Literal
 
 
 class Balaboba:
